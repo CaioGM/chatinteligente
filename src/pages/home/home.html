@@ -4,25 +4,41 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-    
-    <ion-list class="mensagemCliente">
+<ion-content style="overflow-y: hidden;">
+   
+    <!--ion-list class="mensagemCliente">
         <ion-item *ngFor="let message of messagesUsuario">{{message}}</ion-item>
     </ion-list>
     <ion-list class="mensagemWatson">
         <ion-item *ngFor="let message of messagesWatson" >{{message}}</ion-item>
+    </ion-list-->
+    <ion-list>
+        <div style="witdh: 20%;">
+        <ion-item *ngFor="let message of msg" >
+            <label  class="chat-bubble {{message.position}}">{{message.content}}</label>
+        </ion-item>
+            </div>
     </ion-list>
+    
 </ion-content>
 
 
 <ion-footer>
   <ion-toolbar>
-      <ion-input [(ngModel)]="chatBox" placeholder="Digite a mensagem aqui..."></ion-input>
       
-      <button (click)="send(chatBox)">Send</button>
-    <ion-input>
-       
-        
-    </ion-input>
+      <ion-grid>
+  <ion-row>
+    <ion-col col-10> <ion-input autofocus id="inputChat" [(ngModel)]="chatBox" placeholder="Digite a mensagem aqui..." (keyup.enter)="send(chatBox)"></ion-input></ion-col>
+
+    <ion-col col-2><button type="submit" (click)="send(chatBox)" (keyup.enter)="send(chatBox)">
+          <ion-icon name="send">
+
+</ion-icon></button></ion-col>
+  </ion-row>
+</ion-grid>
+     
+      
+      
+ 
 </ion-toolbar>
 </ion-footer>
